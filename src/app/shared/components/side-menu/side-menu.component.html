@@ -1,0 +1,22 @@
+<h2>Paginas</h2>
+<hr>
+<ul class="list-group">
+  <li
+    *ngFor="let item of reactiveMenu"
+    class="list-group-item"
+    routerLinkActive="active"
+    [routerLink]="item.route"
+  >
+    {{ item.title }}
+</ul>
+
+<hr>
+<ul class="list-group">
+  <li
+    *ngFor="let item of authMenu"
+    class="list-group-item"
+    routerLinkActive="active"
+    [routerLink]="item.route"
+  >
+    {{ item.title }}
+</ul>

@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: 'dynamic', component: DynamicPageComponent },
       { path: 'register', component: RegisterPageComponent },
       { path: 'switches', component: SwitchesPageComponent },
-      { path: '', redirectTo: 'basicPage', pathMatch: 'full' }
+      { path: '', redirectTo: 'basic', pathMatch: 'full' }
     ]
   }
 ];
