@@ -8,6 +8,12 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class BasicPageComponent implements OnInit {
 
+  // public myForm: FormGroup = new FormGroup({
+  //   name: new FormControl('', []),
+  //   price: new FormControl(0),
+  //   inStorage: new FormControl(0),
+  // });
+
   public myForm: FormGroup = new FormGroup({});
 
   constructor(
