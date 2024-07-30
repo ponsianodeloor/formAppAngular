@@ -7,6 +7,7 @@ import { BasicPageComponent } from './pages/basic-page/basic-page.component';
 import { DynamicPageComponent } from './pages/dynamic-page/dynamic-page.component';
 import { SwitchesPageComponent } from './pages/switches-page/switches-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { SyncDataPageComponent } from './pages/sync-data-page/sync-data-page.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     RegisterPageComponent,
     BasicPageComponent,
     DynamicPageComponent,
-    SwitchesPageComponent
+    SwitchesPageComponent,
+    SyncDataPageComponent
   ],
   imports: [
     CommonModule,

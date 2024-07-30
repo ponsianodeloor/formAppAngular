@@ -12,12 +12,13 @@ export class SideMenuComponent {
     { title: 'Basic', route: './reactive/basic' },
     { title: 'Dynamic', route: './reactive/dynamic' },
     { title: 'Register', route: './reactive/register' },
-    { title: 'Switches', route: './reactive/switches' }
+    { title: 'Switches', route: './reactive/switches' },
+    { title: 'Sync', route: './reactive/sync' }
   ];
 
   public authMenu: MenuItemInterface[] = [
     { title: 'Login', route: './auth/login' },
-    { title: 'Register', route: './auth/sign-up' }
+    { title: 'Register', route: './auth/sign-up' },
   ];
 
 }

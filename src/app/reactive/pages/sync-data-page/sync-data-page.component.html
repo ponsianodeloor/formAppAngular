@@ -1,0 +1,10 @@
+<div>
+  <h2>Shared Data</h2>
+  <pre>{{ sharedData | json }}</pre>
+  <button (click)="updateSharedData({ key: 'value' })">Update Data</button>
+  <button (click)="addSharedData()">Add Data</button>
+
+  <button (click)="getAllSharedData()">Get All Data</button>
+  <h2>All Data</h2>
+  <pre>{{ allData | json }}</pre>
+</div>
