@@ -64,6 +64,26 @@ export class DynamicPageComponent implements OnInit {
     return null;
   }
 
+  getFieldErrorInArray(field: string, index: number): string | null {
+    const control = (this.myForm.get(field) as FormArray).at(index);
+    if (!control) return null;
+
+    const errors = control.errors || {};
+
+    for (const key of Object.keys(errors)) {
+      switch (key) {
+        case 'required':
+          return `Este ${field} es requerido.`;
+        case 'minlength':
+          return `Mínimo ${errors['minlength'].requiredLength} caracteres.`;
+        case 'invalidName':
+          return 'Nombre inválido';
+      }
+    }
+
+    return null;
+  }
+
   isValidFieldInArray(field: string, index: number): boolean | null {
     return this.favoriteGames.controls[index].errors
       && this.favoriteGames.controls[index].touched;

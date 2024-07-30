@@ -43,7 +43,6 @@
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Favoritos</label>
     <div class="col-sm-9" formArrayName="favoriteGames">
-
       <div class="mb-1" *ngFor="let favorite of favoriteGames.controls; let i = index">
         <div class="input-group">
           <input
@@ -62,11 +61,9 @@
           class="form-text text-danger"
           *ngIf="isValidFieldInArray('favoriteGames', i)"
         >
-          Este campo es requerido
+          {{this.getFieldErrorInArray('favoriteGames', i)}}
         </span>
-
       </div>
-
     </div>
   </div>
 
@@ -81,8 +78,8 @@
         class="form-text text-danger"
         *ngIf="isValidField('email')"
       >
-                   error message
-            </span>
+        error message
+      </span>
     </div>
   </div>
 
