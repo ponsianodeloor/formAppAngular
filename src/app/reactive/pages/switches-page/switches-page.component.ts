@@ -8,7 +8,12 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class SwitchesPageComponent implements OnInit {
 
+  public person = {
+    gender: 'F',
+    notifications: true
+  }
   public myForm:FormGroup = new FormGroup({});
+
 
   constructor(
     private fb: FormBuilder
@@ -28,6 +33,9 @@ export class SwitchesPageComponent implements OnInit {
       return;
     }
     const formValue = this.myForm.value;
+    // this.person= formValue
+    const {terms, ...newPerson} = formValue;
+    this.person = newPerson;
     console.log(formValue);
   }
 
