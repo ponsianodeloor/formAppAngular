@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {cantBeUsername} from "../../../shared/validators/validators";
 
 @Component({
   selector: 'app-register-page',
@@ -18,7 +19,8 @@ export class RegisterPageComponent implements OnInit{
     this.myForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
-      username: ['', Validators.required],
+      //TODO: Implementar validacion sincrona
+      username: ['', [Validators.required, cantBeUsername]],
       password: ['', Validators.required, Validators.minLength(6)],
       retype_password: [''],
     });
