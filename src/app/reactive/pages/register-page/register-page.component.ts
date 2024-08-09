@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {EmailValidator, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {firstNameAndLastnamePattern, emailPattern, cantBeUsername} from "../../../shared/validators/validators";
 import {ValidatorService} from "../../../shared/services/validator.service";
+import {EmailValidatorService} from "../../../shared/services/validators/email-validator.service";
 
 @Component({
   selector: 'app-register-page',
@@ -14,7 +15,9 @@ export class RegisterPageComponent implements OnInit{
 
   constructor(
     private fb: FormBuilder,
-    private validatorService: ValidatorService
+    private validatorService: ValidatorService,
+    //private emailValidatorService: EmailValidatorService este servicio no se usa en caso de usar new EmailValidator()
+    private emailValidatorService: EmailValidatorService
   ) { }
 
   /*ngOnInit(): void {
@@ -30,11 +33,32 @@ export class RegisterPageComponent implements OnInit{
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern(this.validatorService.firstNameAndLastnamePattern)]],
-      email: ['', [Validators.required, Validators.pattern(this.validatorService.emailPattern)]],
-      username: ['', [Validators.required, this.validatorService.cantBeUsername]],
-      password: ['', Validators.required, Validators.minLength(6)],
-      retype_password: ['', Validators.required, Validators.minLength(6)],
+      name: [
+        '',
+        [Validators.required, Validators.pattern(this.validatorService.firstNameAndLastnamePattern)]
+      ],
+      /*email: [
+        '',
+        [Validators.required, Validators.pattern(this.validatorService.emailPattern)],
+        [new EmailValidator()]
+      ],*/
+      email: [
+        '',
+        [Validators.required, Validators.pattern(this.validatorService.emailPattern)],
+        [this.emailValidatorService.validate.bind(this.emailValidatorService)]
+      ],
+      username: [
+        '',
+        [Validators.required, this.validatorService.cantBeUsername]
+      ],
+      password: [
+        '',
+        [Validators.required, Validators.minLength(6)]
+      ],
+      retype_password: [
+        '',
+        [Validators.required, Validators.minLength(6)]
+      ],
     });
   }
 
