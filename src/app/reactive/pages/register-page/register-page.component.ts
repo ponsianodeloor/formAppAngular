@@ -32,7 +32,7 @@ export class RegisterPageComponent implements OnInit{
   }*/
 
   ngOnInit() {
-    this.myForm = this.fb.group({
+    this.myForm = this.fb.nonNullable.group({
       name: [
         '',
         [Validators.required, Validators.pattern(this.validatorService.firstNameAndLastnamePattern)]
@@ -59,6 +59,9 @@ export class RegisterPageComponent implements OnInit{
         '',
         [Validators.required, Validators.minLength(6)]
       ],
+    }, {
+      validators:
+        [this.validatorService.isTheSamePassword('password', 'retype_password')]
     });
   }
 
