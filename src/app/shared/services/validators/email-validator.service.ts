@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AbstractControl, AsyncValidator, ValidationErrors} from "@angular/forms";
-import {Observable, of} from "rxjs";
-import {delay, map} from "rxjs/operators";
+import {Observable} from "rxjs";
+import {delay} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +10,15 @@ export class EmailValidatorService implements AsyncValidator{
 
   constructor() { }
 
-  validate(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+  /*validate(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     const email = control.value;
     console.log(email);
 
-    /*return of({
+    /!*return of({
       email: true
     }).pipe(
       delay(2000)
-    );*/
+    );*!/
 
     return of(email).pipe(
       delay(2000),
@@ -27,6 +27,24 @@ export class EmailValidatorService implements AsyncValidator{
         const emailExists = value === 'test@example.com';
         return emailExists ? { emailTaken: true } : null;
       })
+    );
+  }*/
+
+  validate(control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
+    const email = control.value;
+    //console.log(email);
+
+    return  new Observable<ValidationErrors | null>((observer) => {
+      if (email === 'ponsianodeloor@gmail.com') {
+        console.log('Email already taken');
+        observer.next({emailTaken: true});
+        observer.complete();
+        //return;
+      }
+      observer.next(null);
+      observer.complete();
+    }).pipe(
+      delay(2000)
     );
   }
 
